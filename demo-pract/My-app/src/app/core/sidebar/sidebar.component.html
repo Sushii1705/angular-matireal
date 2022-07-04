@@ -1,16 +1,13 @@
 <div class="example-container h-100 shadow border-1">
-<ul class="nav flex-column">
-    <li class="nav-item">
-      <a class="nav-link text-dark" aria-current="page" routerLink="/user">User</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="">Form</a>
-    </li>
-    <li class="nav-item ">
-      <a class="nav-link text-dark" routerLink="">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-dark" routerLink="" tabindex="-1" aria-disabled="true">Disabled</a>
-    </li>
-  </ul>
+  <mat-list role="list">
+    <mat-list-item role="listitem" routerLink="/user" class="ps-1 border-bottom">
+      <a href="" class="nav-link text-dark">User</a>
+    </mat-list-item>
+    <mat-list-item role="listitem" routerLink="/user" class="ps-1 border-bottom">
+      <a href="" class="nav-link text-dark">Form</a>
+    </mat-list-item>
+    <mat-list-item role="listitem" routerLink="/user" class="ps-1 border-bottom">
+      <a href="" class="nav-link text-dark">view</a>
+    </mat-list-item>
+  </mat-list>
 </div>

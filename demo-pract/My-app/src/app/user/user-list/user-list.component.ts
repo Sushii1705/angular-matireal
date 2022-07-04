@@ -1,27 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UserList } from '../model/user-model';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class UserListComponent implements OnInit {
-  constructor() { }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-    {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-    {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-    {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-    {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-    {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-    {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-    {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-    {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-    {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  ];
-  ngOnInit(): void {
-    
+  @Input() public set userdata(value: UserList[] | null){
+    if (value) {
+      console.log('lol',value);
+      this._userdata = value;
+    }
+  }
+  public get userdata(): UserList[] | null {
+    return this._userdata;
+  }
+  @Output() public delete: EventEmitter<number>;
+
+  private _userdata : UserList[]
+  constructor(private userservice:UserService) {
+    this.delete = new EventEmitter();
+   }
+  displayedColumns: string[] = ['name', 'age', 'email', 'mobileno','gender','action'];
+ 
+  ngOnInit(): void {  
+  }
+  
+  onDelete(id:number){
+    console.log(id);  
+    this.delete.emit(id);
   }
 
 }

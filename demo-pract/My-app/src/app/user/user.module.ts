@@ -6,6 +6,9 @@ import { UserComponent } from './user.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { MaterialModule } from '../material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UserService } from './service/user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -13,7 +16,11 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     UserRoutingModule,
-    MaterialModule
-  ]
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers:[UserService]
 })
 export class UserModule { }

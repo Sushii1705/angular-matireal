@@ -1,0 +1,20 @@
+{
+  "UserList": [
+    {
+      "name": "Ankita Lokhande",
+      "age": "37",
+      "email": "ankita@mayur.com",
+      "mobileno": "9081887878",
+      "gender": "Female",
+      "id": 1
+    },
+    {
+      "name": "Mayur Kawle",
+      "age": "22",
+      "email": "Mayur@ankita.com",
+      "mobileno": "9512301573",
+      "gender": "Male",
+      "id": 2
+    }
+  ]
+}
