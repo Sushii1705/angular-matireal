@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { observable, Observable } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { element } from 'protractor';
+import { BehaviorSubject, observable, Observable, Subject } from 'rxjs';
+import { OverlayComponent } from '../shared/overlay/overlay.component';
 import { UserList } from './model/user-model';
 import { UserService } from './service/user.service';
 
@@ -10,10 +13,15 @@ import { UserService } from './service/user.service';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-public userdata:FormGroup
+public userdata:FormGroup;
+public editdata:BehaviorSubject<UserList|string>
+public editdata$:Observable<UserList | string>
+
 public userdata$:Observable<UserList[]>;
-  constructor(private userservice:UserService) { 
+  constructor(private userservice:UserService,public dialog: MatDialog) { 
     this.userdata$ = new Observable();
+    this.editdata = new BehaviorSubject('');
+    this.editdata$ = this.editdata.asObservable();
   }
 
   ngOnInit(): void {
@@ -21,11 +29,20 @@ public userdata$:Observable<UserList[]>;
 
   }
   delete(id: number) {
-    this.userservice.deleteData(id).subscribe((res: UserList) => {
+    const overlayref=this.dialog.open(OverlayComponent);
+    overlayref.afterClosed().subscribe(res=>{
       console.log(res);
-      alert('lol')
-    });
+    if(res === true){
+      this.userservice.deleteData(id).subscribe((res: UserList) => {
+        console.log('new',res);
+      });
+    }
+      
+    })
     this.userdata$ = this.userservice.getuserdata();
   }
-
+  edit(element:any){
+    console.log('no',element); 
+    this.editdata.next(element);
+  }
 }

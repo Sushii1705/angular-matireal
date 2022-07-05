@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { UserList } from '../model/user-model';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -8,9 +11,27 @@ import { UserService } from '../service/user.service';
   styleUrls: ['./user-form.component.scss']
 })
 export class UserFormComponent implements OnInit {
+  @Input() public set editdata(value: UserList | null){
+    console.log('formedit',value);
+    if (value) {
+      this._editdata = value;
+      this.id = value.id;
+      this.userForm.patchValue(value)
+    }
+  }
+  public get editdata(): UserList | null {
+    return this._editdata;
+  }
+  private _editdata : UserList
+
   checked = false;
-  userForm:FormGroup
-  constructor(private fb:FormBuilder ,private userservice:UserService) { }
+  public id!: number;
+  userForm:FormGroup;
+  formtitle : boolean =false;
+  public userdata$:Observable<UserList>
+  constructor(private fb:FormBuilder ,private userservice:UserService,private activatedRoute:ActivatedRoute) { 
+    this.userdata$ = new Observable();
+  }
 
   ngOnInit(): void {
     this.userForm = this.buildform();
@@ -26,6 +47,14 @@ export class UserFormComponent implements OnInit {
   }
   onSubmit(){
     console.log(this.userForm.value);
-    this.userservice.postUserdData(this.userForm.value).subscribe()
+    if(!this.editdata){
+      this.userservice.postUserdData(this.userForm.value).subscribe();
+    }
+    else{
+      this.userservice.editData(this.userForm.value,this.id).subscribe();
+    }
+  }
+  onReset(){
+    this.userForm.reset()
   }
 }

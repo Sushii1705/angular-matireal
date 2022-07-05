@@ -37,6 +37,29 @@ export class UserService {
    * @returns observable
    */
   public deleteData(id: number): Observable<UserList> {
-    return this.http.delete<UserList>(`${this.apiLink}/${id}`)
+    return this.http.delete<UserList>(`${this.apiLink}/${id}`);
   }
+
+
+   /**
+   * @author Sushil Haraiakar
+   * @name getByUserId
+   * @description this method is for get user'id from list
+   * @returns observable
+   */
+    public getByUserId(id: number): Observable<UserList> {
+      return this.http.get<UserList>(`${this.apiLink}/${id}`);
+    }
+  
+   /**
+   * @author Sushil Haraiakar
+   * @name editData
+   * @description this method is for update user'data
+   * @returns observable
+   */
+    public editData(data:UserList,id: number): Observable<UserList> {
+      console.log('editid',id);
+      
+      return this.http.put<UserList>(`${this.apiLink}/${id}`,data);
+    }
 }
