@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
     this.edit = new EventEmitter();
 
    }
-  displayedColumns: string[] = ['name', 'age', 'email', 'mobileno','gender','action'];
+  displayedColumns: string[] = ['name', 'age', 'email', 'mobileno','gender','skills','action'];
  
   ngOnInit(): void {  
   }

@@ -1,28 +1,189 @@
 {
   "UserList": [
     {
-      "name": "Mayur Kawle",
+      "name": "Ankita Lokhande",
       "age": "22",
-      "email": "Mayur@ankita.com",
+      "email": "ankita@mayur.com",
+      "mobileno": "+919512301573",
+      "gender": "Female",
+      "skills": [
+        "developer"
+      ],
+      "id": 13
+    },
+    {
+      "name": "Mayur ",
+      "age": "37",
+      "email": "ankita@mayur.com",
       "mobileno": "9753575523",
       "gender": "Male",
+      "skills": [
+        "developer",
+        "ssssss"
+      ],
+      "id": 14
+    }
+  ],
+  "AdmissionDetails": [
+    {
+      "name": "",
+      "dob": "",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "",
+      "gender": "",
+      "subject": [],
+      "id": 1
+    },
+    {
+      "name": "ankit",
+      "dob": "",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "9",
+      "gender": "",
+      "subject": [],
+      "id": 2
+    },
+    {
+      "name": "reeya",
+      "dob": "",
+      "address": "developer",
+      "bloodgroup": "ssssss",
+      "email": "ankita@mayur.com",
+      "mobileno": "9724677566",
+      "gender": "Male",
+      "subject": [],
+      "id": 3
+    },
+    {
+      "name": "",
+      "dob": "",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "",
+      "gender": "",
+      "subject": [],
+      "id": 4
+    },
+    {
+      "name": "Mayur ",
+      "dob": "2022-07-12T18:30:00.000Z",
+      "address": "developer",
+      "bloodgroup": "ssssss",
+      "email": "suchi@ankita.com",
+      "mobileno": "9724677566",
+      "gender": "Male",
+      "subject": [],
+      "id": 5
+    },
+    {
+      "name": "shuchii",
+      "dob": "2022-07-13T18:30:00.000Z",
+      "address": "developer",
+      "bloodgroup": "ssssss",
+      "email": "suchi@ankita.com",
+      "mobileno": "9724677566",
+      "gender": "Female",
+      "subject": [
+        "sqcsq",
+        "sqcsq"
+      ],
+      "id": 6
+    },
+    {
+      "name": "",
+      "dob": "",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "",
+      "gender": "",
+      "subject": [
+        ""
+      ],
+      "id": 7
+    },
+    {
+      "name": "",
+      "dob": "",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "",
+      "gender": "",
+      "subject": [
+        ""
+      ],
+      "id": 8
+    },
+    {
+      "name": "",
+      "dob": "",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "",
+      "gender": "",
+      "subject": [
+        ""
+      ],
       "id": 9
     },
     {
-      "name": "Ankita Lokhande",
-      "age": "37",
-      "email": "Mayur@ankita.com",
-      "mobileno": "9512301573",
-      "gender": "Female",
+      "name": "",
+      "dob": "2022-07-06T18:30:00.000Z",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "",
+      "gender": "",
+      "subject": [
+        ""
+      ],
+      "id": 10
+    },
+    {
+      "name": "",
+      "dob": "",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "",
+      "gender": "",
+      "subject": [
+        ""
+      ],
       "id": 11
     },
     {
-      "name": "Tejashree pradhan",
-      "age": "22",
-      "email": "Mayur@Tejashreee.com",
-      "mobileno": "9081887878",
-      "gender": "Female",
+      "name": "",
+      "dob": "2022-07-14T18:30:00.000Z",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "",
+      "gender": "",
+      "subject": [
+        ""
+      ],
       "id": 12
+    },
+    {
+      "name": "",
+      "dob": "",
+      "address": "",
+      "bloodgroup": "",
+      "email": "",
+      "mobileno": "",
+      "gender": "",
+      "subject": [
+        ""
+      ],
+      "id": 13
     }
   ]
 }

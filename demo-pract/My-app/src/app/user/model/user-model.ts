@@ -5,4 +5,5 @@ export interface UserList {
     email:string;
     mobileno:string;
     gender:string;
+    skills:string[];
 }

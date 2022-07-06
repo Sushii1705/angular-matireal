@@ -17,7 +17,7 @@ export class UserService {
    * @returns observable
    */
   public getuserdata() : Observable<UserList[]>{
-    return this.http.get<UserList[]>(this.apiLink);
+    return this.http.get<UserList[]>(`${this.apiLink}/UserList`);
   }
 
   /**
@@ -27,7 +27,7 @@ export class UserService {
    * @returns observable
    */
    public postUserdData(data:UserList) : Observable<UserList>{
-    return this.http.post<UserList>(this.apiLink,data);
+    return this.http.post<UserList>(`${this.apiLink}/UserList`,data);
   }
 
   /**
@@ -37,7 +37,7 @@ export class UserService {
    * @returns observable
    */
   public deleteData(id: number): Observable<UserList> {
-    return this.http.delete<UserList>(`${this.apiLink}/${id}`);
+    return this.http.delete<UserList>(`${this.apiLink}/UserList/${id}`);
   }
 
 
@@ -48,7 +48,7 @@ export class UserService {
    * @returns observable
    */
     public getByUserId(id: number): Observable<UserList> {
-      return this.http.get<UserList>(`${this.apiLink}/${id}`);
+      return this.http.get<UserList>(`${this.apiLink}UserList/${id}`);
     }
   
    /**
@@ -60,6 +60,6 @@ export class UserService {
     public editData(data:UserList,id: number): Observable<UserList> {
       console.log('editid',id);
       
-      return this.http.put<UserList>(`${this.apiLink}/${id}`,data);
+      return this.http.put<UserList>(`${this.apiLink}UserList/${id}`,data);
     }
 }

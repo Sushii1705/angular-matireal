@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserList } from '../model/user-model';
@@ -36,14 +36,30 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
     this.userForm = this.buildform();
   }
-  buildform(){
+  buildform():FormGroup{
     return this.fb.group({
-      name:['', Validators.required],
+      name:['', [Validators.required,Validators.maxLength(40)]],
       age:['', Validators.required],
-      email: ['', Validators.required],
-      mobileno:['', Validators.required],
+      email: ['', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
+      mobileno:['', [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
       gender:['', Validators.required],
+      skills: this.fb.array([this.newSkill()])
     })
+  }
+   get skills() : FormArray {
+    return this.userForm.get("skills") as FormArray
+  }
+  newSkill(): FormControl {
+    return this.fb.control('',Validators.required)
+  }
+  addSkills() {
+    this.skills.push(this.newSkill());
+ }
+  removeSkill(i:number) {
+    this.skills.removeAt(i);
+  }
+  submit(){
+      console.log(this.userForm.value);
   }
   onSubmit(){
     console.log(this.userForm.value);
