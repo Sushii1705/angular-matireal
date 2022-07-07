@@ -25,7 +25,27 @@ export class AdmissionService {
    * @description this method is for getting user'data
    * @returns observable
    */
-  public getuserdata() : Observable<AdmissionDetails>{
-    return this.http.get<AdmissionDetails>(`${this.apiLink}/AdmissionDetails`);
+  public getuserdata() : Observable<AdmissionDetails[]>{
+    return this.http.get<AdmissionDetails[]>(`${this.apiLink}/AdmissionDetails`);
   }
+
+  /**
+   * @author Sushil Haraiakar
+   * @name deleteData
+   * @description this method is for post user'data
+   * @returns observable
+   */
+   public deleteData(id: string): Observable<AdmissionDetails> {
+    return this.http.delete<AdmissionDetails>(`${this.apiLink}/AdmissionDetails/${id}`);
+  }
+  /**
+   * @author Sushil Haraiakar
+   * @name deleteData
+   * @description this method is for post user'data
+   * @returns observable
+   */
+   public postalPinCode(pincode: string): Observable<any> {
+    return this.http.get<any>(`https://api.postalpincode.in/pincode/${pincode}`);
+  }
+  
 }

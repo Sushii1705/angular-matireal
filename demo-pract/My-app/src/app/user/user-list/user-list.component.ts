@@ -46,7 +46,6 @@ export class UserListComponent implements OnInit {
     
   }
   openDialog(id:number) {
-  
     console.log(id);  
     this.delete.emit(id);
   }

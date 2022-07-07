@@ -1,6 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { AdmissionDetails } from 'src/app/admission/models/admission.model';
@@ -12,8 +12,7 @@ import { AdmissionService } from 'src/app/admission/services/admission.service';
   styleUrls: ['./confirmation-overlay.component.scss']
 })
 export class ConfirmationOverlayComponent implements OnInit {
-
-  constructor(private router:Router,@Inject(MAT_DIALOG_DATA) public data: AdmissionDetails) { 
+  constructor(private router:Router,@Inject(MAT_DIALOG_DATA) public data: AdmissionDetails,public dialogRef: MatDialogRef<ConfirmationOverlayComponent>) { 
 
   }
   displayedColumns: string[] = ['name', 'mobileno', 'email', 'dob','gender','address','action','bloodgroup','subject'];
@@ -25,7 +24,12 @@ console.log('xugvxugu',this.data);
   }
 proceed(){
   this.router.navigateByUrl('/admission/list')
+  this.dialogRef.close();
+
 }
-close(){}
+
+onCloseModal(){
+  this.dialogRef.close();
+ }
 }
 

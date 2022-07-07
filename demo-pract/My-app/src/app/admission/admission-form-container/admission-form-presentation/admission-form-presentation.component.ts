@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { AdmissionDetails } from '../../models/admission.model';
 import { AdmissionService } from '../../services/admission.service';
 import { ConfirmationOverlayComponent } from './confirmation-overlay/confirmation-overlay.component';
 
@@ -11,7 +12,32 @@ import { ConfirmationOverlayComponent } from './confirmation-overlay/confirmatio
   styleUrls: ['./admission-form-presentation.component.scss']
 })
 export class AdmissionFormPresentationComponent implements OnInit {
+
+  @Input() public set postaldata(value:any){
+    console.log('postallistdata:',value);
+    if(value){
+      this._postaldata = value;
+      console.log('state',value[1]);
+      
+      this.statepostal = value[1];
+      this.citypostal = value[0];
+      console.log(value[0]);
+      
+    }
+  }
+  
+  public get postaldata(): any {
+    return this._postaldata;
+  }
+  public _postaldata : any 
+  public statepostal : any 
+  public citypostal : any 
+
+
   addmisionForm:FormGroup;
+  @Output() ListData = new EventEmitter<AdmissionDetails>();
+  @Output() pincode = new EventEmitter<AdmissionDetails>();
+
 
   constructor(private fb:FormBuilder,public dialog: MatDialog,private router:Router,private addmissionservice:AdmissionService) { }
 
@@ -21,12 +47,15 @@ export class AdmissionFormPresentationComponent implements OnInit {
   }
   buildform():FormGroup{
     return this.fb.group({
-      name:['', [Validators.required,Validators.maxLength(40),Validators.pattern("^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$")]],
+      name:['', [Validators.required,Validators.maxLength(40),Validators.pattern("[a-zA-Z][a-zA-Z ]+")]],
       dob:['', Validators.required],
       address:['',[ Validators.required,Validators.maxLength(200)]],
       bloodgroup:['', [Validators.required,Validators.pattern("^(A|B|AB|O)[+|-]$")]],
       email: ['', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       mobileno:['', [Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]],
+      pincode:['',Validators.required],
+      state:['',Validators.required],
+      city:['',Validators.required],
       gender:['', Validators.required],
       subject: this.fb.array([this.newSubject()])
     })
@@ -55,5 +84,13 @@ export class AdmissionFormPresentationComponent implements OnInit {
         console.log('form:',res);
       })
   })
+  this.ListData.emit(this.addmisionForm.value);
+
+}
+onPincode(){
+  console.log(this.addmisionForm.controls['pincode'].value);
+  if(this.addmisionForm.controls['pincode'].valid){
+  this.pincode.emit(this.addmisionForm.controls['pincode'].value);
+  }
 }
 }

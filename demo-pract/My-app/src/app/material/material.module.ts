@@ -13,6 +13,9 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+
 const mat = [MatSidenavModule,
   MatButtonModule,
   MatIconModule,
@@ -26,7 +29,9 @@ const mat = [MatSidenavModule,
   MatDialogModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatCardModule]
+  MatCardModule,
+  MatSelectModule,
+  MatAutocompleteModule]
 
 @NgModule({
   imports: [mat],
